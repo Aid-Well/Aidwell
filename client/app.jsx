@@ -1,12 +1,26 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './store'
+import SearchResults from './containers/SearchResults'
 
-const App = (props) =>{
-    return (
-        <div>
-            Test
-        </div>
-    )
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+      }
+    render() {
+        return (
+            <SearchResults/>
+        )
+    }
 }
 
-export default App;
+ReactDOM.render(
+    (
+    <Provider store = {store}>
+    <App/>
+    </Provider>
+    ),
+    document.getElementById('root')
+  );
+
