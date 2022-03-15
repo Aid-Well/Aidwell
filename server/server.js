@@ -8,7 +8,7 @@ const mainRouter = require('./routes/main');
 
 app.use(express.json());
 
-// Routes
+// // Routes
 app.use('/main', mainRouter);
 app.use('/user', userRouter);
 // Routes
@@ -21,12 +21,13 @@ app.use((req, res) =>
 
 // Error handling
 app.use((err, req, res) => {
+  console.log('err', err)
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
     status: 500,
     message: { err: 'An error occurred' },
   };
-  const errorObj = { ...defaultErr, ...err };
+  const errorObj = Object.assign(defaultErr, err);
   console.log(errorObj.status, errorObj.log);
   return res.status(errorObj.status).json(errorObj.message);
 });

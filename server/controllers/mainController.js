@@ -1,33 +1,34 @@
 /* eslint-disable no-param-reassign */
 const axios = require('axios');
-const db = require('../model');
 
 const mainController = {
-  getCharities(req, res, next) {
-    let query = process.env.APIURL;
+  buildQuery(req, res, next) {
+    console.log(process.env.APIURL)
+    res.locals.query = process.env.APIURL;
     if ('search' in req.body && typeof req.body.search === 'string')
-      query += `&search=${req.body.search}`;
+      res.locals.query += `&search=${req.body.search}`;
     if (
       'fundraisingOrgs' in req.body &&
       typeof req.body.fundraisingOrgs === 'boolean'
     )
-      query += `&fundraisingOrgs=${req.body.fundraisingOrgs}`;
+      res.locals.query += `&fundraisingOrgs=${req.body.fundraisingOrgs}`;
     if ('state' in req.body && req.body.state.length === 2)
-      query += `&state=${req.body.state.toUpperCase()}`;
-    if ('city' in req.body) query += `&city=${req.body.city}`;
+      res.locals.query += `&state=${req.body.state.toUpperCase()}`;
+    if ('city' in req.body) res.locals.query += `&city=${req.body.city}`;
     if ('zip' in req.body && req.body.zip.length === 5)
-      query += `&zip=${req.body.zip}`;
-    if (
-      'sizeRange' in req.body &&
-      req.body.sizeRange > 0 &&
-      req.body.sizeRange <= 3
-    )
-      query += `&sizeRange=${req.body.sizeRange}`;
+      res.locals.query += `&zip=${req.body.zip}`;
+    if ('sizeRange' in req.body)
+      if (req.body.sizeRange.toLowerCase() === 'small')
+        res.locals.query += '&sizeRange=1';
+      else if (req.body.sizeRange.toLowerCase() === 'medium')
+        res.locals.query += '&sizeRange=2';
+      else if (req.body.sizeRange.toLowerCase() === 'large')
+        res.locals.query += '&sizeRange=3';
     if (
       'donorPrivacy' in req.body &&
       typeof req.body.donorPrivacy === 'boolean'
     )
-      query += `&donorPrivacy=${req.body.donorPrivacy}`;
+      res.locals.query += `&donorPrivacy=${req.body.donorPrivacy}`;
     if ('scopeOfWork' in req.body) {
       const scope = req.body.scopeOfWork;
       if (
@@ -36,17 +37,20 @@ const mainController = {
         scope === 'NATIONAL' ||
         scope === 'INTERNATIONAL'
       )
-        query += `&scopeOfWork=${scope}`;
+        res.locals.query += `&scopeOfWork=${scope}`;
     }
     if (
       'noGovSupport' in req.body &&
       typeof req.body.noGovSupport === 'boolean'
     )
-      query += `&noGovSupport=${req.body.noGovSupport}`;
+      res.locals.query += `&noGovSupport=${req.body.noGovSupport}`;
 
-    console.log(`Searching for ${query}`);
-    axios
-      .get(query)
+    next();
+  },
+
+  getCharities(req, res, next) {
+    console.log(res.locals.query);
+    axios.get(res.locals.query)
       .then((charities) => {
         res.locals.raw = charities.data;
         next();

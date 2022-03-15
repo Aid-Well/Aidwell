@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.put(
   '/findCharities',
+  mainController.buildQuery,
   mainController.getCharities,
   mainController.processCharities,
   (req, res) => res.status(200).send(res.locals.parsed)
