@@ -1,29 +1,52 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable consistent-return */
 const db = require('../models/userModel');
 
 const userController = {
-  findUser(req, res, next) {
-
+  verifyUser(req, res, next) {
+    const { username, password } = req.body;
+    db.find({ username }, { username: 1, password: 1, charities: 1 }).then(
+      (data) => {
+        const checkPassword = password === data[0].password;
+        if (!checkPassword)
+          return next(
+            new Error(
+              'Invalid credentials in userController verifyUser middleware.'
+            )
+          );
+        res.locals.user = {
+          username: data[0].username,
+          charities: data[0].charities,
+        };
+        return next();
+      }
+    );
   },
 
   addUser(req, res, next) {
-    const noEmail = !('email' in req.body);
-    const noUsername = !('username' in req.body);
-    const noPassword = !('password' in req.body);
-    if (noEmail || noPassword || noUsername)
-      console.log('here')
-    return next({ status: 400, log: 'Missing credentials' });
+    const { email, username, password } = req.body;
+    const missingArg = !email || !username || !password;
+    const badEmail =
+      typeof email !== 'string' || !email.includes('@') || !email.includes('.');
+    const badUsername = typeof username !== 'string';
+    const badPassword = typeof password !== 'string';
+    if (missingArg || badEmail || badUsername || badPassword)
+      return next(
+        new Error('Invalid credentials in userController adUser middleware.')
+      );
 
     db.create(
       {
-        email: 'me@gmail.com',
-        username: 'me',
-        password: '1234',
+        email,
+        username,
+        password,
         charities: [],
       },
       (err, newUser) => {
         if (err) return next(err);
-        res.locals.user = newUser;
+        // eslint-disable-next-line no-shadow
+        const { username, charities } = newUser;
+        res.locals.user = { username, charities };
         return next();
       }
     );
