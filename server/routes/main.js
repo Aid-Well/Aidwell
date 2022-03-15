@@ -1,9 +1,13 @@
 const express = require('express');
-const userController = require('../controllers/mainController');
+const mainController = require('../controllers/mainController');
+
 const router = express.Router();
 
-router.get('/findCharities', 
-  (req, res) => res.sendStatus(200)
-)
+router.put(
+  '/findCharities',
+  mainController.getCharities,
+  mainController.processCharities,
+  (req, res) => res.status(200).send(res.locals.parsed)
+);
 
-module.exportss = router;
+module.exports = router;
