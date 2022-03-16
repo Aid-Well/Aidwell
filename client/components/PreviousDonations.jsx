@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import store from '../store.js';
+import PrevDonCard from './PrevDonCard';
 
 const mapStateToProps = state => ({
-  favorites: state.state.user
+  user: state.state.user
 })
 
 class PreviousDonations extends React.Component {
@@ -12,16 +12,18 @@ class PreviousDonations extends React.Component {
   }
 
   render() {
-    console.log('in favs!')
-    console.log('favorites:', this.props.favorites)
-
+    const charities = []
+    for (let i = 0; i < this.props.user.charities.length; i++) {
+      charities.push(
+        <PrevDonCard {...this.props.user.charities[i]} username={this.props.user.username} />
+      )
+    }
     return (
-      <div className='favs'>
-        FAVORITES
+      <div className='PreviousDonations!'>
+        <strong>PREVIOUS DONATIONS</strong>
+        {charities}
       </ div>
     )
-    // const favs = [];
-    // for (let i = 0; i < this.props.users.)
   }
 }
 

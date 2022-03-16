@@ -6,7 +6,8 @@ import Card from './Card.jsx';
 import { Link } from "react-router-dom";
 
 const mapStateToProps = state => ({
-  charities: state.state.charities
+  charities: state.state.charities,
+  username: state.state.user.username
 })
 
 class SearchResults extends React.Component {
@@ -20,6 +21,7 @@ class SearchResults extends React.Component {
       charities.push(
         <>
           <Card
+            username={this.props.username}
             name={this.props.charities[i].name}
             mission={this.props.charities[i].mission}
             link={this.props.charities[i].link}

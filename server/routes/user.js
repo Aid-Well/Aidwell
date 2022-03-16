@@ -12,7 +12,7 @@ router.post(
   userController.getUserCharities,
   userController.parseUserCharities,
   userController.updateDatabaseUserCharities,
-  (req, res) => res.status(200).send(res.locals.user.charities)
+  (req, res) => res.status(200).send(res.locals.user)
 );
 
 router.put(
@@ -20,7 +20,7 @@ router.put(
   userController.getUserCharities,
   userController.updateFav,
   userController.updateDatabaseUserCharities,
-  (req, res) => res.status(200).send(res.locals.user.charities)
+  (req, res) => res.status(200).send(res.locals.user)
 );
 
 router.put('/login', userController.verifyUser, (req, res) =>

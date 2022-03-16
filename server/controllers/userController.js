@@ -110,6 +110,7 @@ const userController = {
 
   updateDatabaseUserCharities(req, res, next) {
     const { user } = res.locals;
+    res.locals.user = { username: user.username, charities: user.charities };
     db.updateOne(
       { username: user.username },
       { $set: { charities: user.charities } }
