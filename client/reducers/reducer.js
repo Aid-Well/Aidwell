@@ -21,6 +21,7 @@ const reducer = (state = initialState, action) => {
 //     .then(res => dispatch(GET_CHARITIES(res)))
 //     }
 
+
 export const getCharitiesServ = () => (dispatch) => {
   const tester = dispatch(GET_CHARITIES([
     {

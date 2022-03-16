@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import Navbar from '../components/Navbar'
 
 class Main extends React.Component {
   constructor(props) {
@@ -12,9 +13,9 @@ class Main extends React.Component {
 
   render() {
     return (
-      <Link to = '/'>
-      <button id = "login">back to login</button>
-      </Link>
+      <div>
+      <Navbar />
+      </div>
     )
   }
 }
