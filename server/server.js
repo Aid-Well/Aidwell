@@ -2,11 +2,12 @@ const express = require('express');
 require('dotenv').config();
 
 const app = express();
+app.use(express.json());
 const PORT = 3000;
 const userRouter = require('./routes/user');
 const mainRouter = require('./routes/main');
 
-app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // // Routes
 app.use('/main', mainRouter);
@@ -14,9 +15,9 @@ app.use('/user', userRouter);
 // Routes
 
 // Page not found
-app.use((req, res) =>
-  res.status(404).send("This is not the page you're looking for...")
-);
+app.use((req, res) => {
+  res.status(404).send("This is not the page you're looking for...");
+});
 // Page not found
 
 // Error handling

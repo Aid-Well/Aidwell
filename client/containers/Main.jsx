@@ -12,9 +12,15 @@ class Main extends React.Component {
 
   render() {
     return (
-      <Link to = '/'>
-      <button id = "login">back to login</button>
-      </Link>
+      <div>
+        <Link to = '/'>
+        <button id = "login">back to login</button>
+        </Link>
+
+        <Link to = '/searchResults'>
+        <button id = "searchResults">search results</button>
+        </Link>
+      </div>
     )
   }
 }

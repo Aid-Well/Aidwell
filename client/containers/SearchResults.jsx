@@ -3,6 +3,7 @@ import store from '../store.js';
 import { getCharitiesServ } from '../reducers/reducer.js';
 import { connect } from 'react-redux';
 import Card from '../components/Card.jsx';
+import { Link } from "react-router-dom";
 
 const mapStateToProps = state => ({
     charities: state.charities
@@ -37,6 +38,9 @@ class SearchResults extends React.Component {
       return (
         <div>
           {charities}
+          <Link to = '/main'>
+          <button id = "main"> main </button>
+          </Link>
         </div>
       );
     }
