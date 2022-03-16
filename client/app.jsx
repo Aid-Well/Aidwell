@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 
 import store from './store'
@@ -22,9 +22,12 @@ class App extends React.Component {
             <div>
                 <Router>
                     <Routes>
-                        <Route exact path='/' element={<Login />} />
+                        <Route exact path='/' element={<Login/>} />
                         <Route exact path='/main' element={<Main />} />
-                        <Route exact path='/searchResults' element={<SearchResults />} />
+
+                        {/* <Route exact path ='/searchResults' element={<SearchResults/>}/> */}
+                        {/* <Route path="/SearchResults" element={<Navigate replace to="/SearchResults" />} /> */}
+
                     </Routes>
                 </Router>
             </div>

@@ -3,6 +3,7 @@ const axios = require('axios');
 
 const mainController = {
   buildQuery(req, res, next) {
+
     res.locals.query = process.env.APIURL;
     if ('search' in req.body && typeof req.body.search === 'string')
       res.locals.query += `&search=${req.body.search}`;

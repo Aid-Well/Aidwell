@@ -30,6 +30,9 @@ module.exports = {
      */
     proxy: {
       '/user/**': 'http://localhost:3000/',
+
+      '/main/**': 'http://localhost:3000/',
+
     },
   },
   module: {
