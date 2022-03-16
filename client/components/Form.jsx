@@ -9,7 +9,7 @@ const Form = (props) =>{
 const createBody = () => {
   return {
     search: document.getElementById('search').value,
-    fundraisingOrgs: document.getElementById('fundraisingOrgs').value,
+    fundraisingOrgs: document.getElementById('fundraisingOrgs').value === 'true' ? true : false,
     state: document.getElementById('State').value,
     zip: document.getElementById('Zipcode').value,
     sizeRange: document.getElementById('size').value,
