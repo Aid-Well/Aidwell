@@ -8,9 +8,7 @@ router.put(
   mainController.buildQuery,
   mainController.getCharities,
   mainController.processCharities,
-  (req, res) => {
-    res.status(200).send(res.locals.parsed);
-  }
+  (req, res) => res.status(200).send(res.locals.parsed)
 );
 
 module.exports = router;

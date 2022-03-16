@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: false }));
 // // Routes
 app.use('/main', mainRouter);
 app.use('/user', userRouter);
+app.get('/test', (req, res) => res.status(200).send({ hello: 'world' })); // For testing purposes
 // Routes
 
 // Page not found
@@ -34,10 +35,6 @@ app.use((err, req, res) => {
 });
 // Error handling
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server listening on port: ${PORT}...`);
-});
-// Start server
+// Server actually starts in ./server/start.js for testing purposes
 
 module.exports = app;
