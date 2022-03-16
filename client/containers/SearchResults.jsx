@@ -1,6 +1,4 @@
 import React from 'react';
-import store from '../store.js';
-import { getCharitiesServ } from '../reducers/reducer.js';
 import { connect } from 'react-redux';
 import Card from '../components/Card.jsx';
 import { Link } from "react-router-dom";
@@ -15,7 +13,7 @@ class SearchResults extends React.Component {
     }
     
     componentDidMount() {
-        store.dispatch(getCharitiesServ());
+        // store.dispatch(getCharitiesServ());
     }
   
     render() {

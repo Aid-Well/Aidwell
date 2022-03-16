@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+
+const mapStateToProps = (state) => ({
+  user: state.state.user
+})
+
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
+    console.log('state:', props.user);
   }
 
 //   const findChars = (el) => {
@@ -25,4 +32,4 @@ class Main extends React.Component {
   }
 }
 
-export default Main;
+export default connect(mapStateToProps, null)(Main);

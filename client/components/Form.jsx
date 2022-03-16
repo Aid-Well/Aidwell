@@ -1,8 +1,13 @@
 import React from 'react';
-import store from '../store.js';
-import { getCharitiesServ } from '../store.js'
+import { connect } from 'react-redux';
+import { getCharitiesServ } from '../store.js';
+import * as actions from '../actions/actions';
 
-const Form = () =>{
+const mapDispatchToProps = (dispatch) => ({
+  addCharitiesToState: (charityInfo) => dispatch(action.GET_CHARITIES(charityInfo))
+})
+
+const Form = (props) =>{
     
 const handleSubmit = (el) => {
     const requestOptions = {
@@ -12,7 +17,7 @@ const handleSubmit = (el) => {
     };
     fetch('/findCharities', requestOptions)
     .then(res => res.json())
-    .then(res => store.dispatch(getCharitiesServ()))
+    .then(res => props.addCharitiesToState(res.data))
 }
 
 
@@ -46,4 +51,4 @@ return(
   )
 };
 
-export default Form;
+export default connect(null, mapDispatchToProps)(Form);
