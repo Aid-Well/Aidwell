@@ -1,10 +1,79 @@
-.charitycards{
-  width: 200px;
-  height: 100x;
-  border: 4px solid rgb(106, 143, 237)
+.loginBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 60px;
+  border: 1px solid rgb(103, 215, 246);
+  min-width: 300px;
+  min-height: 500px;
+  border-radius: 10px;
+  background-color: rgb(190, 226, 236);
+  box-shadow: 5px 5px 3px rgba(255, 219, 219, 0.798);
 }
+
+.buttonStyle{
+  min-width: 100%;
+  border: 1px solid rgb(85, 131, 162);
+  background-color: rgb(116, 221, 179);
+  box-shadow: 3px 3px 2px rgba(160, 197, 155, 0.418);
+  padding: 13px;
+  font-size: 20px;
+  border-radius: 10px;
+  font-family: 'Readex Pro', sans-serif;
+  font-weight: bold;
+  color: rgb(220, 220, 220)
+}
+
+.gridContainer {
+  display: inline-grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  column-gap: 50px;
+}
+
+.charitycard {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  display: flex;
+  flex-direction: row;
+  align-self: stretch;
+  justify-content: flex-end;
+  width: 100%;
+  min-width: 500px;
+  border: 1px solid;
+  box-shadow:  0 2px 5px 2px;
+}
+
+.image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.information {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 20px 12px 22px;
+}
+
 .ratings {
-  width: 10px;
-  height: 5x;
-  border: 1px solid rgb(166, 166, 233)
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  width: 500px;
+  padding: 12px 20px 12px 22px;
+}
+
+.previousDonations {
+  grid-column-start: 3;
+  grid-column-end: 3;
+}
+
+.form {
+  grid-column-start: 1;
+  grid-column-end: 1;
 }
