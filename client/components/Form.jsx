@@ -2,6 +2,13 @@ import React from 'react';
 import store from '../store.js';
 import { getCharitiesServ } from '../reducers/reducer.js';
 import axios from 'axios';
+import * as actions from '../actions/actions'
+import { connect } from 'react-redux';
+
+const mapDispatchToProps = (dispatch) => ({
+  addCharitiesToState: (charityInfo) => {
+    dispatch(actions.GET_CHARITIES(charityInfo))}
+})
 
 const Form = (props) =>{
 
@@ -11,14 +18,11 @@ const createBody = () => {
     state: document.getElementById('State').value,
     city: document.getElementById('City').value,
     zip: document.getElementById('Zipcode').value,
-    // fundraisingOrgs: document.getElementById('fundraisingOrgs').value,
-    fundraisingOrgs: document.getElementById('fundraisingOrgs').value === 'true' ? true : false,
-    sizeRange: document.getElementById('size').value,
-    // donorPrivacy: document.getElementById('donorPrivacy').value,
-    fundraisingOrgs: document.getElementById('donorPrivacy').value === 'true' ? true : false,
-    scopeOfWork: document.getElementById('scopeofwork').value,
-    // noGovSupport: document.getElementById('noGovSupport').value,
-    fundraisingOrgs: document.getElementById('noGovSupport').value === 'true' ? true : false,
+    sizeRange: document.getElementById('size').value === 'true' ? '' : document.getElementById('size').value, //?
+    scopeOfWork: document.getElementById('scopeofwork').value === 'true' ? '' : document.getElementById('scopeofwork').value, //?
+    fundraisingOrgs: document.getElementById('fundraisingOrgs').value === 'true' || document.getElementById('fundraisingOrgs').value === '' ? true : false,
+    donorPrivacy: document.getElementById('donorPrivacy').value === 'true' || document.getElementById('donorPrivacy').value === ''  ? true : false,
+    // noGovSupport: document.getElementById('noGovSupport').value === 'true' || document.getElementById('noGovSupport').value === '' ? true : false,
   }
 }
 
@@ -27,14 +31,15 @@ const resetFields = () => {
   document.getElementById('State').value = '';
   document.getElementById('City').value = '';
   document.getElementById('Zipcode').value = '';
-  document.getElementById('fundraisingOrgs').value = ''; //
-  document.getElementById('size').value = '';
-  document.getElementById('donorPrivacy').value = ''; //
-  document.getElementById('scopeofwork').value = '';
-  document.getElementById('noGovSupport').value = ''; //
+  document.getElementById('size').value = 'small';
+  document.getElementById('scopeofwork').value = 'ALL';
+  document.getElementById('fundraisingOrgs').value = 'true'; 
+  document.getElementById('donorPrivacy').value = 'true'; 
+  // document.getElementById('noGovSupport').value = 'true'; 
 }
 
 const makeServerCall = (reqBody) => {
+  console.log(reqBody);
   axios({
     method: 'PUT',
     url: '/main/findCharities',
@@ -42,7 +47,7 @@ const makeServerCall = (reqBody) => {
     headers: { 'Content-Type': 'application/json' },
     data: reqBody
   })
-  .then(data => store.dispatch(getCharitiesServ(data)))
+  .then(data => props.addCharitiesToState(data.data))
   .catch(err => console.log('err:', err))
 }
     
@@ -71,7 +76,6 @@ return(
         <div className = 'dropdown'>
           <label htmlFor = "fundraisingOrgs">Fundraising for Charities: </label>
           <select name = "fundraisingOrgs" id = "fundraisingOrgs">
-          <option disabled selected value> </option>
           <option value="true">true</option>
           <option value="false">false</option>
           </select>
@@ -80,10 +84,9 @@ return(
         <div className = 'dropdown'>
           <label htmlFor = "size">Size: </label>
           <select name = "size" id = "size">
-          <option disabled selected value> </option>
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value='large'>Large</option>
+          <option value="small">small</option>
+          <option value="medium">medium</option>
+          <option value='large'>large</option>
           </select>
         </div>
 
@@ -91,7 +94,6 @@ return(
         <div className = 'dropdown'>
           <label htmlFor = "donorPrivacy">Donor Privacy: </label>
           <select name = "donorPrivacy" id = "donorPrivacy">
-          <option disabled selected value> </option>
           <option value="true">true</option>
           <option value="false">false</option>
           </select>
@@ -100,26 +102,24 @@ return(
         <div className = 'dropdown'>
           <label htmlFor = "scopeofwork" >Scope of Work: </label>
           <select name = "scopeofwork" id = "scopeofwork">
-          <option disabled selected value> </option>
-          <option value="ALL">All </option>
-          <option value="REGIONAL">Regional</option>
-          <option value="NATIONAL">National</option>
-          <option value="INTERNATIONAL">International</option>
+          <option value="ALL">ALL </option>
+          <option value="REGIONAL">REGIONAL</option>
+          <option value="NATIONAL">NATIONAL</option>
+          <option value="INTERNATIONAL">INTERNATIONAL</option>
           </select>
         </div>
       
-        <div className = 'dropdown'>
+        {/* <div className = 'dropdown'>
           <label htmlFor = "noGovSupport">Government Support: </label>
           <select name = "noGovSupport" id = "noGovSupport">
-          <option disabled selected value> </option>
           <option value="true">true</option>
           <option value="false">false</option>
           </select>
-        </div>
+        </div> */}
         <button type = 'submit' className ='formSubmit'>Submit</button>
     </form>
   </div>
   )
 };
 
-export default Form;
+export default connect(null, mapDispatchToProps)(Form);
