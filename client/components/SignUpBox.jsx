@@ -37,13 +37,17 @@ const LoginBox = (props) => {
   const passwordText = React.createRef();
   const emailText = React.createRef();
   return (
-    <div className='loginBox'>
+    <div className='signupBox'>
       <form onSubmit={(event) => submitRegister(event, usernameText, passwordText, emailText)}>
-        <div className="loginText"> Register for an Account</div>
-        <input ref={usernameText} placeholder="username" autoComplete="off" required></input>
-        <input ref={passwordText} placeholder="password" type="password" autoComplete="off" required></input>
-        <input ref={emailText} placeholder="email" autoComplete="off" required></input>
-        <button type='submit'> REGISTER </button>
+        <div className="signupText"> Register for an Account</div>
+        <center>
+          <input ref={usernameText} placeholder="username" autoComplete="off" required></input>
+          <br/>
+          <input ref={passwordText} placeholder="password" type="password" autoComplete="off" required></input>
+          <br/>
+          <input ref={emailText} placeholder="email" autoComplete="off" required></input><br/>
+          <button type='submit'> REGISTER </button>
+        </center>
       </form>
     </div>
   )
