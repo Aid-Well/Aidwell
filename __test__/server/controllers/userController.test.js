@@ -49,18 +49,8 @@ xdescribe('userController testing suite', () => {
       username: 'test name',
       charities: [{ charityName: 'test charity', donationAmount: 15 }],
     };
-    const updatedAmount = {
-      username: 'test name',
-      charities: [
-        {
-          charityName: 'test charity',
-          donationAmount: 25,
-          lastDonation: new Date(),
-        },
-      ],
-    };
     parseUserCharities(req, res, next);
-    expect(res.locals.user).toEqual(updatedAmount);
+    expect(res.locals.user.charities[0].donationAmount).toEqual(25);
   });
 
   it('Should add a new charity', () => {
@@ -73,21 +63,8 @@ xdescribe('userController testing suite', () => {
       username: 'test name',
       charities: [],
     };
-    const userWithAddedCharity = {
-      username: 'test name',
-      charities: [
-        {
-          charityName: 'test charity',
-          donationAmount: 10,
-          lastDonation: new Date(),
-          catImage: '',
-          causeImage: '',
-          favorite: false,
-        },
-      ],
-    };
     parseUserCharities(req, res, next);
-    expect(res.locals.user).toEqual(userWithAddedCharity);
+    expect(res.locals.user.charities[0].donationAmount).toEqual(10);
   });
 
   it('Should have an verifyUser function', () => {

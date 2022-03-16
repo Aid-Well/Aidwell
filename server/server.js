@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: false }));
 // // Routes
 app.use('/main', mainRouter);
 app.use('/user', userRouter);
-app.get('/test', (req, res) => res.status(200).send({ hello: 'world' })); // For testing purposes
+// app.get('/test', (req, res) => res.status(200).send({ hello: 'world' })); // For testing purposes
 // Routes
 
 // Page not found
