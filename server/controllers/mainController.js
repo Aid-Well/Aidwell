@@ -3,7 +3,6 @@ const axios = require('axios');
 
 const mainController = {
   buildQuery(req, res, next) {
-
     res.locals.query = process.env.APIURL;
     if ('search' in req.body && typeof req.body.search === 'string')
       res.locals.query += `&search=${req.body.search}`;
@@ -14,7 +13,8 @@ const mainController = {
       res.locals.query += `&fundraisingOrgs=${req.body.fundraisingOrgs}`;
     if ('state' in req.body && req.body.state.length === 2)
       res.locals.query += `&state=${req.body.state.toUpperCase()}`;
-    if ('city' in req.body) res.locals.query += `&city=${req.body.city}`;
+    if ('city' in req.body && typeof req.body.city === 'string')
+      res.locals.query += `&city=${req.body.city}`;
     if ('zip' in req.body && req.body.zip.length === 5)
       res.locals.query += `&zip=${req.body.zip}`;
     if ('sizeRange' in req.body)
@@ -29,15 +29,17 @@ const mainController = {
       typeof req.body.donorPrivacy === 'boolean'
     )
       res.locals.query += `&donorPrivacy=${req.body.donorPrivacy}`;
-    if ('scopeOfWork' in req.body) {
-      const scope = req.body.scopeOfWork;
-      if (
-        scope === 'ALL' ||
-        scope === 'REGIONAL' ||
-        scope === 'NATIONAL' ||
-        scope === 'INTERNATIONAL'
-      )
-        res.locals.query += `&scopeOfWork=${scope}`;
+    const possibleScopes = {
+      ALL: true,
+      REGIONAL: true,
+      NATIONAL: true,
+      INTERNATIONAL: true,
+    };
+    if (
+      'scopeOfWork' in req.body &&
+      req.body.scopeOfWork.toUpperCase() in possibleScopes
+    ) {
+      res.locals.query += `&scopeOfWork=${req.body.scopeOfWork.toUpperCase()}`;
     }
     if (
       'noGovSupport' in req.body &&
@@ -45,11 +47,10 @@ const mainController = {
     )
       res.locals.query += `&noGovSupport=${req.body.noGovSupport}`;
 
-    next();
+    return next();
   },
 
   getCharities(req, res, next) {
-    console.log(res.locals.query);
     axios.get(res.locals.query)
       .then((charities) => {
         res.locals.raw = charities.data;

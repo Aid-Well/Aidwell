@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-mongoose.connect(process.env.DBURL);
+const url =
+  process.env.NODE_ENV === 'development'
+    ? process.env.DBURL
+    : process.env.TESTDBURL;
+mongoose.connect(url).catch((err) => err);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 db.once('open', () => {
