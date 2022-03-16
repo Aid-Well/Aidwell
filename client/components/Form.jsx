@@ -11,11 +11,14 @@ const createBody = () => {
     state: document.getElementById('State').value,
     city: document.getElementById('City').value,
     zip: document.getElementById('Zipcode').value,
-    fundraisingOrgs: document.getElementById('fundraisingOrgs').value,
+    // fundraisingOrgs: document.getElementById('fundraisingOrgs').value,
+    fundraisingOrgs: document.getElementById('fundraisingOrgs').value === 'true' ? true : false,
     sizeRange: document.getElementById('size').value,
-    donorPrivacy: document.getElementById('donorPrivacy').value,
+    // donorPrivacy: document.getElementById('donorPrivacy').value,
+    fundraisingOrgs: document.getElementById('donorPrivacy').value === 'true' ? true : false,
     scopeOfWork: document.getElementById('scopeofwork').value,
-    noGovSupport: document.getElementById('noGovSupport').value,
+    // noGovSupport: document.getElementById('noGovSupport').value,
+    fundraisingOrgs: document.getElementById('noGovSupport').value === 'true' ? true : false,
   }
 }
 
@@ -24,11 +27,11 @@ const resetFields = () => {
   document.getElementById('State').value = '';
   document.getElementById('City').value = '';
   document.getElementById('Zipcode').value = '';
-  document.getElementById('fundraisingOrgs').value = '';
+  document.getElementById('fundraisingOrgs').value = ''; //
   document.getElementById('size').value = '';
-  document.getElementById('donorPrivacy').value = '';
+  document.getElementById('donorPrivacy').value = ''; //
   document.getElementById('scopeofwork').value = '';
-  document.getElementById('noGovSupport').value = '';
+  document.getElementById('noGovSupport').value = ''; //
 }
 
 const makeServerCall = (reqBody) => {
