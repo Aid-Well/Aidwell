@@ -1,22 +1,18 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import Navbar from '../components/Navbar'
+import Form from '../components/Form'
+import SearchResults from '../components/SearchResults'
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
   }
 
-//   const findChars = (el) => {
-    
-// }
-
   render() {
     return (
       <div>
-
-      <Navbar />
-
+        <Form/>
+        <SearchResults/>
       </div>
     )
   }

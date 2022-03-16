@@ -2,7 +2,7 @@ import React from 'react';
 import store from '../store.js';
 import { getCharitiesServ } from '../reducers/reducer.js';
 import { connect } from 'react-redux';
-import Card from '../components/Card.jsx';
+import Card from './Card.jsx';
 import { Link } from "react-router-dom";
 
 const mapStateToProps = state => ({
@@ -13,11 +13,7 @@ class SearchResults extends React.Component {
     constructor(props) {
       super(props);
     }
-    
-    componentDidMount() {
-        store.dispatch(getCharitiesServ());
-    }
-  
+     
     render() {
         const charities = [];
         for (let i = 0; i < this.props.charities.charities.length; i++) {
@@ -38,23 +34,9 @@ class SearchResults extends React.Component {
       return (
         <div>
           {charities}
-          <Link to = '/main'>
-          <button id = "main"> main </button>
-          </Link>
         </div>
       );
     }
   }
 
   export default connect(mapStateToProps, null)(SearchResults);
-
-//   name: 'test1',
-//   mission: 'test1',
-//   link: 'test1',
-//   catImage: 'test1',
-//   causeImage: 'test1',
-//   overAllScore: 'test1',
-//   financialRating: 'test1',
-//   accountabilityRating: 'test1',
-//   deductibility: 'test1',
-//   ein: 'test1'
