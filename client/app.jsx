@@ -24,8 +24,10 @@ class App extends React.Component {
                     <Routes>
                         <Route exact path='/' element={<Login/>} />
                         <Route exact path='/main' element={<Main />} />
+
                         {/* <Route exact path ='/searchResults' element={<SearchResults/>}/> */}
                         {/* <Route path="/SearchResults" element={<Navigate replace to="/SearchResults" />} /> */}
+
                     </Routes>
                 </Router>
             </div>
