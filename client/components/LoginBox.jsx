@@ -36,9 +36,12 @@ const LoginBox = (props) => {
     <div className='loginBox'>
       <form onSubmit={(event) => submitLogin(event, usernameText, passwordText)}>
         <div className="loginText"> Aidwell </div>
+        <center>
         <input ref={usernameText} placeholder="username" autoComplete="off" required></input>
-        <input ref={passwordText} placeholder="password" type="password" autoComplete="off" required></input>
+        <br/>
+        <input ref={passwordText} placeholder="password" type="password" autoComplete="off" required></input><br/>
         <button type='submit'> LOG IN </button>
+        </center>
       </form>
     </div>
   )
