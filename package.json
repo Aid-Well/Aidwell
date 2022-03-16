@@ -1,0 +1,67 @@
+{
+  "name": "Aidwell",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=8.3.0"
+  },
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "server": "nodemon ./server/start.js",
+    "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --open --hot --progress --color \" \"nodemon ./server/start.js\"",
+    "test": "jest --setupFiles dotenv/config --forceExit"
+  },
+  "dependencies": {
+    "@material-ui/icons": "^4.11.2",
+    "axios": "^0.26.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.16.3",
+    "mongoose": "^6.1.8",
+    "pg": "^8.5.1",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-hot-loader": "^4.6.3",
+    "react-redux": "^7.2.6",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^6.2.2-pre.0",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.3",
+    "concurrently": "^5.0.0",
+    "cross-env": "^6.0.3",
+    "css-loader": "^6.7.1",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.5.1",
+    "nodemon": "^1.18.9",
+    "prettier": "^2.5.1",
+    "style-loader": "^3.3.1",
+    "supertest": "^6.2.2",
+    "webpack": "^5.64.1",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.5.0",
+    "webpack-hot-middleware": "^2.24.3"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "server/data/*",
+      "client/*"
+    ]
+  }
+}
