@@ -46,7 +46,7 @@ const Card = (props) => {
         EIN: {props.ein}<br />
       </p>
       <div className='information'>
-        Mission Statement:{props.mission}
+        {props.mission}
       </div>
     </div>
   )

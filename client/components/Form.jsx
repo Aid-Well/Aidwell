@@ -60,7 +60,7 @@ const Form = (props) => {
   }
 
   return (
-    <div className="form">
+    <div className="formBox"> <center>Charity Search</center>
       <form onSubmit={handleSubmit}>
         <label htmlFor='search'>Charity Keyword: </label>
         <input type="text" id="search" name="search" /><br />
@@ -117,7 +117,7 @@ const Form = (props) => {
           <option value="false">false</option>
           </select>
         </div> */}
-        <button type='submit' className='formSubmit'>Submit</button>
+        <button type='submit' className='formSubmit'>SUBMIT</button>
       </form>
     </div>
   )

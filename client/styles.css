@@ -1,52 +1,105 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@700&display=swap');
+body {background-color: rgb(173, 209, 240)}
+
 .loginBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  font-size: 60px;
+  border: 1px solid rgb(0, 74, 124);
+  min-width: 100px;
+  min-height: 300px;
+  border-radius: 10px;
+  background-color: rgb(232, 241, 245);
+  box-shadow: 5px 5px 3px grid-template-columns;
+}
+
+.frontpageText{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  align-items: center;
+  font-size: 60px;
+  font-family: 'Playfair Display SC', serif;
+  border: 5px solid rgb(232, 241, 245);
+  min-width: 100px;
+  min-height: 300px;
+  border-radius: 10px;
+  background-color:rgb(159, 212, 247);
+  box-shadow: 5px 5px 3px grid-template-columns;
+}
+
+.favs{
+  font-family: 'Playfair Display SC', serif;
+}
+
+.loginText{
+  font-size: 80px;
+  justify-content: center;
+  font-family: 'Playfair Display SC', serif;
+  display: flex;
+  flex-direction: row;
+}
+
+.singupText{
+  font-size: 40px;
+  justify-content: center;
+  font-family: 'Playfair Display SC', serif;
+  display: flex;
+  flex-direction: row;
+}
+
+.signupBox {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  font-size: 60px;
-  border: 1px solid rgb(103, 215, 246);
-  min-width: 300px;
-  min-height: 500px;
-  border-radius: 10px;
-  background-color: rgb(190, 226, 236);
-  box-shadow: 5px 5px 3px rgba(255, 219, 219, 0.798);
+  min-width: 100px;
+  min-height: 300px;
+  border: 1px solid rgb(0, 74, 124);
+  background-color: rgb(232, 241, 245);
+  font-size: 30px;
+  box-shadow: 5px 5px 3px;
 }
 
 .buttonStyle{
   min-width: 100%;
-  border: 1px solid rgb(85, 131, 162);
-  background-color: rgb(116, 221, 179);
-  box-shadow: 3px 3px 2px rgba(160, 197, 155, 0.418);
+  border: 1px solid rgb(2, 53, 98);
+  background-color: rgb(164, 190, 201);
+  box-shadow: 3px 3px 2px rgb(0, 74, 124);
   padding: 13px;
   font-size: 20px;
   border-radius: 10px;
-  font-family: 'Readex Pro', sans-serif;
+  font-family: 'Playfair Display SC', serif;
   font-weight: bold;
-  color: rgb(220, 220, 220)
+  color: rgb(0, 74, 124)
 }
 
 .gridContainer {
   display: inline-grid;
-  grid-template-columns: 1fr 3fr 1fr;
-  column-gap: 50px;
+  grid-template-columns: 2fr 3fr 1fr;
+  column-gap: 10px;
 }
 
 .charitycard {
+  display: flex;
+  background-color: rgb(232, 241, 245);
   grid-column-start: 2;
   grid-column-end: 2;
-  display: flex;
   flex-direction: row;
   align-self: stretch;
   justify-content: flex-end;
-  width: 100%;
-  min-width: 500px;
-  border: 1px solid;
-  box-shadow:  0 2px 5px 2px;
+  /* width:200; */
+  /* inline-size: min-content; */
+  border: 2px solid;
+  box-shadow:  0 1px 3px 1px;
 }
 
 .image {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   flex-shrink: 0;
 }
@@ -69,13 +122,16 @@
 }
 
 .previousDonations {
-  grid-column-start: 3;
-  grid-column-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 2;
 }
 
-.form {
-  grid-column-start: 1;
-  grid-column-end: 1;
+.formBox {
+  border:2px solid;
+  border-color: rgb(rgb(11, 60, 84));
+  border-radius: 5px;
+  max-height:340px;
+  font-family: 'Playfair Display SC', serif;
 }
 
 .prevDonCard {
