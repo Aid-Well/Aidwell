@@ -19,8 +19,14 @@ const userController = {
           charities: data[0].charities,
         };
         return next();
-      }
-    );
+      })
+    .catch(() =>
+        next(
+          new Error(
+            'Invalid credentials in userController verifyUser middleware.'
+          )
+        )
+      );
   },
 
   addUser(req, res, next) {
