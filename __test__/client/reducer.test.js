@@ -1,6 +1,6 @@
 import reducer from '../../client/reducers/reducer';
 
-xdescribe('Should update state in consistent ways', () => {
+describe('Should update state in consistent ways', () => {
   const initialState = { charities: [], user: {} };
   it('Should set to initial state by default', () => {
     const result = reducer();
