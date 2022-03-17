@@ -7,7 +7,7 @@ const {
   updateDatabaseUserCharities,
 } = require('../../../server/controllers/userController');
 
-xdescribe('userController testing suite', () => {
+describe('userController testing suite', () => {
   let req;
   let res;
   let next;

@@ -4,7 +4,7 @@ const {
   getCharities,
 } = require('../../../server/controllers/mainController');
 
-xdescribe('mainController testing suite', () => {
+describe('mainController testing suite', () => {
   let req;
   let res;
   let next;
