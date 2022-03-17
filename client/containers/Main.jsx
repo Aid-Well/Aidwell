@@ -1,25 +1,28 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import Navbar from '../components/Navbar'
+import Form from '../components/Form'
+import SearchResults from '../components/SearchResults'
+import PreviousDonations from '../components/PreviousDonations'
+import { connect } from 'react-redux';
+
+const mapStateToProps = (state) => ({
+  user: state.state.user
+})
+
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
   }
 
-//   const findChars = (el) => {
-    
-// }
-
   render() {
     return (
-      <div>
-
-      <Navbar />
-
+      <div className="gridContainer">
+        <Form />
+        <PreviousDonations />
+        <SearchResults />
       </div>
     )
   }
 }
 
-export default Main;
+export default connect(mapStateToProps, null)(Main);

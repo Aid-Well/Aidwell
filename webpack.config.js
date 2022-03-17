@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -42,14 +41,14 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: { presets: ['@babel/preset-react', '@babel/preset-env'] }
+          options: { presets: ['@babel/preset-react', '@babel/preset-env'] },
         },
       },
       {
         test: /.(css|scss)$/,
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader'],
-      }
+      },
     ],
   },
   plugins: [

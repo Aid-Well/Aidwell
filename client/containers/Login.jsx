@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../styles.css'
 import { Link } from "react-router-dom";
 import LoginBox from '../components/LoginBox'
 import SignUpBox from '../components/SignUpBox'
@@ -21,21 +21,18 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="frontpageText">
         {this.state.displayLoginBox ?
           <div>
             <LoginBox />
-            <button onClick={() => this.toggleLoginBox()} className="signupButton">Register </button>
+            <button onClick={() => this.toggleLoginBox()} className="buttonStyle">Register </button>
           </div>
           :
           <div>
             <SignUpBox />
-            <button onClick={() => this.toggleLoginBox()} className="signupButton">Back to Login </button>
+            <button onClick={() => this.toggleLoginBox()} className="buttonStyle">Back to Login </button>
           </div>
         }
-        <Link to='main'>
-          <button id="main">to main</button>
-        </Link>
       </div>
     )
   }

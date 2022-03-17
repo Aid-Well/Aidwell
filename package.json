@@ -7,11 +7,12 @@
   "description": "",
   "main": "server/server.js",
   "scripts": {
-    "server": "nodemon ./server/server.js",
-    "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --open --hot --progress --color \" \"nodemon ./server/server.js\"",
-    "test": "jest"
+    "server": "nodemon ./server/start.js",
+    "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --open --hot --progress --color \" \"nodemon ./server/start.js\"",
+    "test": "jest --setupFiles dotenv/config --forceExit"
   },
   "dependencies": {
+    "@material-ui/icons": "^4.11.2",
     "axios": "^0.26.1",
     "dotenv": "^16.0.0",
     "express": "^4.16.3",
@@ -30,11 +31,12 @@
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@testing-library/react": "^12.1.4",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.3",
     "concurrently": "^5.0.0",
     "cross-env": "^6.0.3",
-    "css-loader": "^6.5.1",
+    "css-loader": "^6.7.1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-node": "^4.1.0",
@@ -51,6 +53,7 @@
     "nodemon": "^1.18.9",
     "prettier": "^2.5.1",
     "style-loader": "^3.3.1",
+    "supertest": "^6.2.2",
     "webpack": "^5.64.1",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.5.0",

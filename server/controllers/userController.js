@@ -80,8 +80,7 @@ const userController = {
   },
 
   parseUserCharities(req, res, next) {
-    const { charityName, donationAmount, username, catImage, causeImage } =
-      req.body;
+    const { charityName, donationAmount, catImage, causeImage } = req.body;
     if (!donationAmount)
       return next(
         new Error('Missing donationAmount userController parseUserCharities')
@@ -100,10 +99,10 @@ const userController = {
       user.charities.push({
         charityName,
         donationAmount: parseInt(donationAmount, 10),
-        username,
         catImage,
         causeImage,
         favorite: false,
+        lastDonation: new Date(),
       });
     res.locals.user = user;
     next();
@@ -111,6 +110,7 @@ const userController = {
 
   updateDatabaseUserCharities(req, res, next) {
     const { user } = res.locals;
+    res.locals.user = { username: user.username, charities: user.charities };
     db.updateOne(
       { username: user.username },
       { $set: { charities: user.charities } }
