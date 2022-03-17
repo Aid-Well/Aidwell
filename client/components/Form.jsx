@@ -1,6 +1,4 @@
 import React from 'react';
-import store from '../store.js';
-import { getCharitiesServ } from '../reducers/reducer.js';
 import axios from 'axios';
 import * as actions from '../actions/actions'
 import { connect } from 'react-redux';

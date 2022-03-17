@@ -1,4 +1,5 @@
 /* eslint-disable node/no-unpublished-require */
+import 'regenerator-runtime/runtime';
 const supertest = require('supertest');
 const mongoose = require('mongoose');
 const app = require('../../server/server');
@@ -36,14 +37,14 @@ describe('/', () => {
     let resp = await request
       .put('/user/changeFav')
       .send({ username: 'me', charityName: 'Test 5' });
-    const newValue = resp.body[0].favorite;
+    const newValue = resp.body.charities[0].favorite;
     expect(resp.status).toBe(200);
     expect(typeof newValue).toBe('boolean');
     resp = await request
       .put('/user/changeFav')
       .send({ username: 'me', charityName: 'Test 5' });
     expect(resp.status).toBe(200);
-    const originalValue = resp.body[0].favorite;
+    const originalValue = resp.body.charities[0].favorite;
     expect(typeof originalValue).toBe('boolean');
     expect(!originalValue).toBe(newValue);
   });
@@ -57,14 +58,14 @@ describe('/', () => {
     let resp = await request
       .post('/user/makeAD')
       .send({ username: 'me', charityName: 'Test 5', donationAmount: 25 });
-    const newValue = resp.body[0].donationAmount;
+    const newValue = resp.body.charities[0].donationAmount;
     expect(resp.status).toBe(200);
     expect(typeof newValue).toBe('number');
     resp = await request
       .post('/user/makeAD')
       .send({ username: 'me', charityName: 'Test 5', donationAmount: 25 });
     expect(resp.status).toBe(200);
-    const updatedValue = resp.body[0].donationAmount;
+    const updatedValue = resp.body.charities[0].donationAmount;
     expect(typeof updatedValue).toBe('number');
     expect(updatedValue).toBe(newValue + 25);
   });
@@ -78,14 +79,14 @@ describe('/', () => {
     let resp = await request
       .post('/user/makeAD')
       .send({ username: 'me', charityName: 'Test 5', donationAmount: 25 });
-    const newValue = resp.body[0].donationAmount;
+    const newValue = resp.body.charities[0].donationAmount;
     expect(resp.status).toBe(200);
     expect(typeof newValue).toBe('number');
     resp = await request
       .post('/user/makeAD')
       .send({ username: 'me', charityName: 'Test 5', donationAmount: 25 });
     expect(resp.status).toBe(200);
-    const updatedValue = resp.body[0].donationAmount;
+    const updatedValue = resp.body.charities[0].donationAmount;
     expect(typeof updatedValue).toBe('number');
     expect(updatedValue).toBe(newValue + 25);
   });
@@ -110,14 +111,14 @@ describe('/', () => {
     let resp = await request
       .post('/user/makeAD')
       .send({ username: 'me', charityName: 'Test 5', donationAmount: 25 });
-    const newValue = resp.body[0].donationAmount;
+    const newValue = resp.body.charities[0].donationAmount;
     expect(resp.status).toBe(200);
     expect(typeof newValue).toBe('number');
     resp = await request
       .post('/user/makeAD')
       .send({ username: 'me', charityName: 'Test 5', donationAmount: 25 });
     expect(resp.status).toBe(200);
-    const updatedValue = resp.body[0].donationAmount;
+    const updatedValue = resp.body.charities[0].donationAmount;
     expect(typeof updatedValue).toBe('number');
     expect(updatedValue).toBe(newValue + 25);
   });
